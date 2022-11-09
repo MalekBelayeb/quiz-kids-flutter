@@ -1,0 +1,44 @@
+name: quiz_flutter
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.3
+  stripe_native: ^1.2.3
+
+  nb_utils: ^4.4.10
+  dots_indicator: ^2.0.0
+  flutter_svg: ^0.23.0+1
+  url_launcher: ^6.0.12
+  cached_network_image: ^3.1.0
+  flutter_staggered_grid_view: ^0.4.1
+  html: ^0.15.0
+  intl: ^0.17.0
+  pay: ^0.0.1
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/quiz/
+
