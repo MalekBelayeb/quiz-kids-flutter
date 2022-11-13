@@ -1,4 +1,0 @@
-com/iqonic/quiz_flutter/BuildConfig.java
- com.iqonic.quiz_flutter.BuildConfig
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant

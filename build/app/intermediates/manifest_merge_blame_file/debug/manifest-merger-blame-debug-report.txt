@@ -12,190 +12,107 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->E:\GitHub\quiz-kids-flutter\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->E:\GitHub\quiz-kids-flutter\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->[:connectivity_plus] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
-15-->[:connectivity_plus] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-76
+15-->[:connectivity_plus] E:\GitHub\quiz-kids-flutter\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
+15-->[:connectivity_plus] E:\GitHub\quiz-kids-flutter\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-76
 16
-17    <uses-feature
-17-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
-18        android:glEsVersion="0x00020000"
-18-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
-19        android:required="true" />
-19-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
-20
-21    <application
-21-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:3:4-41:19
-22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.6.0] C:\Users\wiemo\.gradle\caches\transforms-3\e9198c48d59c06d75ab1a865cfcdd282\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-23        android:debuggable="true"
-24        android:icon="@mipmap/ic_launcher"
-24-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:5:9-43
-25        android:label="Quiz Flutter" >
-25-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:4:9-37
-26        <activity
-26-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:6:9-35:20
-27            android:name="com.iqonic.quiz_flutter.MainActivity"
-27-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:7:13-41
-28            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-28-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:10:13-163
-29            android:exported="true"
-29-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:12:13-36
-30            android:hardwareAccelerated="true"
-30-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:11:13-47
-31            android:launchMode="singleTop"
-31-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:8:13-43
-32            android:theme="@style/LaunchTheme"
-32-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:9:13-47
-33            android:windowSoftInputMode="adjustResize" >
-33-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:13:13-55
-34
-35            <!--
-36                 Specifies an Android theme to apply to this Activity as soon as
-37                 the Android process has started. This theme is visible to the user
-38                 while the Flutter UI initializes. After that, this theme continues
-39                 to determine the Window background behind the Flutter UI.
-40            -->
-41            <meta-data
-41-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:18:13-21:17
-42                android:name="io.flutter.embedding.android.NormalTheme"
-42-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:19:15-70
-43                android:resource="@style/NormalTheme" />
-43-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:20:15-52
-44            <!--
-45                 Displays an Android View that continues showing the launch screen
-46                 Drawable until Flutter paints its first frame, then this splash
-47                 screen fades out. A splash screen is useful to avoid any visual
-48                 gap between the end of Android's launch screen and the painting of
-49                 Flutter's first frame.
-50            -->
-51            <meta-data
-51-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:27:13-30:17
-52                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-52-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:28:15-79
-53                android:resource="@drawable/launch_background" />
-53-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:29:15-61
-54
-55            <intent-filter>
-55-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:31:13-34:29
-56                <action android:name="android.intent.action.MAIN" />
-56-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:32:17-68
-56-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:32:25-66
-57
-58                <category android:name="android.intent.category.LAUNCHER" />
-58-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:33:17-76
-58-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:33:27-74
-59            </intent-filter>
-60        </activity>
-61        <!--
-62             Don't delete the meta-data below.
-63             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-64        -->
-65        <meta-data
-65-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:38:9-40:33
-66            android:name="flutterEmbedding"
-66-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:39:13-44
-67            android:value="2" />
-67-->C:\Users\wiemo\Desktop\pfe\quiz_flutter\android\app\src\main\AndroidManifest.xml:40:13-30
-68        <meta-data
-68-->[:stripe_native] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\stripe_native\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-10:36
-69            android:name="com.google.android.gms.wallet.api.enabled"
-69-->[:stripe_native] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\stripe_native\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-69
-70            android:value="true" />
-70-->[:stripe_native] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\stripe_native\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-33
-71
-72        <activity
-72-->[:url_launcher_android] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
-73            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-73-->[:url_launcher_android] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
-74            android:exported="false"
-74-->[:url_launcher_android] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
-75            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-75-->[:url_launcher_android] C:\Users\wiemo\Desktop\pfe\quiz_flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
-76        <activity
-76-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:12:9-14:57
-77            android:name="com.stripe.android.view.AddPaymentMethodActivity"
-77-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:13:13-76
-78            android:theme="@style/StripeDefaultTheme" />
-78-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:14:13-54
-79        <activity
-79-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:15:9-17:57
-80            android:name="com.stripe.android.view.PaymentMethodsActivity"
-80-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:16:13-74
-81            android:theme="@style/StripeDefaultTheme" />
-81-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:17:13-54
-82        <activity
-82-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:18:9-20:57
-83            android:name="com.stripe.android.view.PaymentFlowActivity"
-83-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:19:13-71
-84            android:theme="@style/StripeDefaultTheme" />
-84-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:20:13-54
-85        <activity
-85-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:21:9-23:57
-86            android:name="com.stripe.android.view.PaymentAuthWebViewActivity"
-86-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:22:13-78
-87            android:theme="@style/StripeDefaultTheme" />
-87-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:23:13-54
-88        <activity
-88-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:24:9-26:57
-89            android:name="com.stripe.android.view.PaymentRelayActivity"
-89-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:25:13-72
-90            android:theme="@style/StripeDefaultTheme" />
-90-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:26:13-54
-91        <activity
-91-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:27:9-29:57
-92            android:name="com.stripe.android.view.Stripe3ds2CompletionActivity"
-92-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:28:13-80
-93            android:theme="@style/StripeDefaultTheme" />
-93-->[com.stripe:stripe-android:14.4.1] C:\Users\wiemo\.gradle\caches\transforms-3\00dffe6ac1b507439ad6802de6edd78f\transformed\jetified-stripe-android-14.4.1\AndroidManifest.xml:29:13-54
-94        <activity
-94-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:12:9-14:54
-95            android:name="com.stripe.android.stripe3ds2.views.ChallengeActivity"
-95-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:13:13-81
-96            android:theme="@style/Stripe3DS2Theme" />
-96-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:14:13-51
-97        <activity
-97-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:15:9-17:54
-98            android:name="com.stripe.android.stripe3ds2.views.ChallengeProgressDialogActivity"
-98-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:16:13-95
-99            android:theme="@style/Stripe3DS2Theme" />
-99-->[com.stripe:stripe-3ds2-android:2.7.8] C:\Users\wiemo\.gradle\caches\transforms-3\b9f433be9aaff8f3b50ec38999093258\transformed\jetified-stripe-3ds2-android-2.7.8\AndroidManifest.xml:17:13-51
-100
-101        <uses-library
-101-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-102            android:name="androidx.window.extensions"
-102-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-103            android:required="false" />
-103-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-104        <uses-library
-104-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-105            android:name="androidx.window.sidecar"
-105-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-106            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
-106-->[androidx.window:window:1.0.0-beta04] C:\Users\wiemo\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-107        <uses-library
-107-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
-108            android:name="org.apache.http.legacy"
-108-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
-109            android:required="false" />
-109-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ccc7eb3898af19993c254436c732b864\transformed\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
-110
-111        <activity
-111-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ce27a0e54ae15cae7e9be85def3ff7d6\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-112            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-112-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ce27a0e54ae15cae7e9be85def3ff7d6\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-113            android:exported="false"
-113-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ce27a0e54ae15cae7e9be85def3ff7d6\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-114            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-114-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\ce27a0e54ae15cae7e9be85def3ff7d6\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-115
-116        <meta-data
-116-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\aebe2f56b8b034458f1b6775dbd1b349\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-117            android:name="com.google.android.gms.version"
-117-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\aebe2f56b8b034458f1b6775dbd1b349\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-118            android:value="@integer/google_play_services_version" />
-118-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\wiemo\.gradle\caches\transforms-3\aebe2f56b8b034458f1b6775dbd1b349\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-119    </application>
-120
-121</manifest>
+17    <application
+17-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:3:4-41:19
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.6.0] C:\Users\Malek\.gradle\caches\transforms-3\e9198c48d59c06d75ab1a865cfcdd282\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:5:9-43
+21        android:label="Quiz Flutter" >
+21-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:4:9-37
+22        <activity
+22-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:6:9-35:20
+23            android:name="com.iqonic.quiz_flutter.MainActivity"
+23-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:7:13-41
+24            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+24-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:10:13-163
+25            android:exported="true"
+25-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:12:13-36
+26            android:hardwareAccelerated="true"
+26-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:11:13-47
+27            android:launchMode="singleTop"
+27-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:8:13-43
+28            android:theme="@style/LaunchTheme"
+28-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:9:13-47
+29            android:windowSoftInputMode="adjustResize" >
+29-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:13:13-55
+30
+31            <!--
+32                 Specifies an Android theme to apply to this Activity as soon as
+33                 the Android process has started. This theme is visible to the user
+34                 while the Flutter UI initializes. After that, this theme continues
+35                 to determine the Window background behind the Flutter UI.
+36            -->
+37            <meta-data
+37-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:18:13-21:17
+38                android:name="io.flutter.embedding.android.NormalTheme"
+38-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:19:15-70
+39                android:resource="@style/NormalTheme" />
+39-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:20:15-52
+40            <!--
+41                 Displays an Android View that continues showing the launch screen
+42                 Drawable until Flutter paints its first frame, then this splash
+43                 screen fades out. A splash screen is useful to avoid any visual
+44                 gap between the end of Android's launch screen and the painting of
+45                 Flutter's first frame.
+46            -->
+47            <meta-data
+47-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:27:13-30:17
+48                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+48-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:28:15-79
+49                android:resource="@drawable/launch_background" />
+49-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:29:15-61
+50
+51            <intent-filter>
+51-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:31:13-34:29
+52                <action android:name="android.intent.action.MAIN" />
+52-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:32:17-68
+52-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:32:25-66
+53
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:33:17-76
+54-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:33:27-74
+55            </intent-filter>
+56        </activity>
+57        <!--
+58             Don't delete the meta-data below.
+59             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+60        -->
+61        <meta-data
+61-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:38:9-40:33
+62            android:name="flutterEmbedding"
+62-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:39:13-44
+63            android:value="2" />
+63-->E:\GitHub\quiz-kids-flutter\android\app\src\main\AndroidManifest.xml:40:13-30
+64
+65        <activity
+65-->[:url_launcher_android] E:\GitHub\quiz-kids-flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
+66            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+66-->[:url_launcher_android] E:\GitHub\quiz-kids-flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
+67            android:exported="false"
+67-->[:url_launcher_android] E:\GitHub\quiz-kids-flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
+68            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+68-->[:url_launcher_android] E:\GitHub\quiz-kids-flutter\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
+69
+70        <uses-library
+70-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+71            android:name="androidx.window.extensions"
+71-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+72            android:required="false" />
+72-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+73        <uses-library
+73-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+74            android:name="androidx.window.sidecar"
+74-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+75            android:required="false" />
+75-->[androidx.window:window:1.0.0-beta04] C:\Users\Malek\.gradle\caches\transforms-3\588210f33698f3841da0dbe21ada331f\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+76    </application>
+77
+78</manifest>

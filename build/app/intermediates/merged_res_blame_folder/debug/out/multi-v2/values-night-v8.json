@@ -1,95 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\wiemo\\Desktop\\pfe\\quiz_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "E:\\GitHub\\quiz-kids-flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\wiemo\\.gradle\\caches\\transforms-3\\b9f433be9aaff8f3b50ec38999093258\\transformed\\jetified-stripe-3ds2-android-2.7.8\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,108,165,221,285,339,393,452,509,587,665,729,791,853",
-                        "endLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,27",
-                        "endColumns": "52,56,55,63,53,53,58,56,77,77,63,61,61,12",
-                        "endOffsets": "103,160,216,280,334,388,447,504,582,660,724,786,848,1772"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,108,165,221,285,339,393,452,509,587,665,729,791,1373",
-                        "endLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,34",
-                        "endColumns": "52,56,55,63,53,53,58,56,77,77,63,61,61,12",
-                        "endOffsets": "103,160,216,280,334,388,447,504,582,660,724,786,848,2292"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\wiemo\\.gradle\\caches\\transforms-3\\00dffe6ac1b507439ad6802de6edd78f\\transformed\\jetified-stripe-android-14.4.1\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,204,285,355,444,507",
-                        "endColumns": "69,78,80,69,88,62,67",
-                        "endOffsets": "120,199,280,350,439,502,570"
-                    },
-                    "to": {
-                        "startLines": "15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "853,923,1002,1083,1153,1242,1305",
-                        "endColumns": "69,78,80,69,88,62,67",
-                        "endOffsets": "918,997,1078,1148,1237,1300,1368"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\wiemo\\.gradle\\caches\\transforms-3\\9842cdb849fb9b6ab0ca0e90a6882a89\\transformed\\material-1.1.0\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,143,267,369,471,587,689,803,931,1047,1169,1305,1425,1559,1679,1791,1917,2055,2179,2309,2431,2569,2685",
-                        "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,137,123,129,121,137,115,119",
-                        "endOffsets": "138,262,364,466,582,684,798,926,1042,1164,1300,1420,1554,1674,1786,1912,2050,2174,2304,2426,2564,2680,2800"
-                    },
-                    "to": {
-                        "startLines": "50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,67,68,69,70,71,72,73",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3395,3483,3607,3709,3811,3927,4029,4143,4271,4387,4509,4645,4765,4899,5019,5131,5346,5484,5608,5738,5860,5998,6114",
-                        "endColumns": "87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,137,123,129,121,137,115,119",
-                        "endOffsets": "3478,3602,3704,3806,3922,4024,4138,4266,4382,4504,4640,4760,4894,5014,5126,5252,5479,5603,5733,5855,5993,6109,6229"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\wiemo\\.gradle\\caches\\transforms-3\\f31e554f15c46c78a03aa831f4d425d1\\transformed\\appcompat-1.1.0\\res\\values-night-v8\\values-night-v8.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,125,209,293,389,491,593,687",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "120,204,288,384,486,588,682,771"
-                    },
-                    "to": {
-                        "startLines": "43,44,45,46,47,48,49,66",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "2763,2833,2917,3001,3097,3199,3301,5257",
-                        "endColumns": "69,83,83,95,101,101,93,88",
-                        "endOffsets": "2828,2912,2996,3092,3194,3296,3390,5341"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\wiemo\\Desktop\\pfe\\quiz_flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "E:\\GitHub\\quiz-kids-flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "172,815",
+                        "startOffsets": "175,829",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "464,979"
+                        "endOffsets": "471,995"
                     },
                     "to": {
-                        "startLines": "35,40",
+                        "startLines": "2,7",
                         "startColumns": "4,4",
-                        "startOffsets": "2297,2594",
-                        "endLines": "39,42",
+                        "startOffsets": "55,352",
+                        "endLines": "6,9",
                         "endColumns": "12,12",
-                        "endOffsets": "2589,2758"
+                        "endOffsets": "347,516"
                     }
                 }
             ]

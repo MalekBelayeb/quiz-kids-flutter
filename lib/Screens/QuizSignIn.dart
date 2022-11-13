@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/QuizDashboard.dart';
-import 'package:quiz_flutter/Screens/QuizSignUp.dart';
-import 'package:quiz_flutter/service/AuthService.dart';
+import 'package:quiz_flutter/Screens/signup/QuizSignUp.dart';
+import 'package:quiz_flutter/controller/AuthController.dart';
+import 'package:quiz_flutter/data/models/Auth.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizConstant.dart';
@@ -19,6 +20,7 @@ class QuizSignIn extends StatefulWidget {
 class _QuizSignInState extends State<QuizSignIn> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -83,45 +85,80 @@ class _QuizSignInState extends State<QuizSignIn> {
                 // SizedBox(  height: 10,),
                 Container(
                     margin: EdgeInsets.fromLTRB(60, 0, 60, 0),
-                    child: quizButton(
-                        textContent: "Se Connecter",
-                        onPressed: () {
-                          setState(() {
-                            if (emailController.text.isEmptyOrNull ||
-                                !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(emailController.text)) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Text("Email invalid"),
-                              ));
-                            } else if (passwordController.text.isEmptyOrNull) {
-                              showDialog<String>(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                        title: Row(children: [
-                                          Image.asset(
-                                            'images/quiz/alerte.png',
-                                            width: 70,
-                                            height: 70,
-                                            fit: BoxFit.contain,
-                                          ),
-                                          Text('  Oh!! Attention. ')
-                                        ]),
-                                        content: Text(
-                                            "Tout les champs sont obligatoirs"),
-                                      ));
+                    child: isLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                            valueColor: new AlwaysStoppedAnimation<Color>(
+                                quiz_colorPrimary),
+                          ))
+                        : quizButton(
+                            textContent: "Se Connecter",
+                            onPressed: () async {
+                              var isCorrectForm = false;
+                              setState(() {
+                                if (emailController.text.isEmptyOrNull ||
+                                    !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                        .hasMatch(emailController.text)) {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text("Email invalid"),
+                                  ));
+                                } else if (passwordController
+                                    .text.isEmptyOrNull) {
+                                  showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                            title: Row(children: [
+                                              Image.asset(
+                                                'images/quiz/alerte.png',
+                                                width: 70,
+                                                height: 70,
+                                                fit: BoxFit.contain,
+                                              ),
+                                              Text('  Oh!! Attention. ')
+                                            ]),
+                                            content: Text(
+                                                "Tout les champs sont obligatoirs"),
+                                          ));
 
-                              const Text('Show Dialog');
-                            } else {
-                              // QuizDashboard().launch(context);
-                              AuthService.login({
-                                "email": emailController.text,
-                                "password": passwordController.text
+                                  const Text('Show Dialog');
+                                } else {
+                                  isCorrectForm = true;
+                                }
                               });
-                            }
-                          });
-                        })),
+
+                              if (isCorrectForm) {
+                                setState(() {
+                                  isLoading = true;
+                                  AuthController.instance
+                                      .login(
+                                          email: emailController.text,
+                                          password: passwordController.text)!
+                                      .then(((value) {
+                                    isLoading = false;
+                                    if (value is SigninErrorRes) {
+                                      showDialog<String>(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                                title: Row(children: [
+                                                  Image.asset(
+                                                    'images/quiz/alerte.png',
+                                                    width: 70,
+                                                    height: 70,
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                  Text('Invalid credentials')
+                                                ]),
+                                                content: Text(
+                                                    "Please verify your credentials"),
+                                              ));
+                                    }
+                                  }));
+                                });
+                              }
+                            })),
 
                 SizedBox(height: 20),
                 Container(

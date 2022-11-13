@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/QuizSplashScreen.dart';
+import 'package:quiz_flutter/utils/navigator_service.dart';
 
 void main() async {
   // await initialize();

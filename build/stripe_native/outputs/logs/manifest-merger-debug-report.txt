@@ -1,27 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
-INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
-INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
+ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:1-11:12
 	package
-		ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:2:3-37
-		INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+		ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:2:3-37
+		INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+		INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:11-69
+		ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:4:5-8:19
+ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:4:5-8:19
 meta-data#com.google.android.gms.wallet.api.enabled
-ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:5:9-7:36
+ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:5:9-7:36
 	android:value
-		ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:7:13-33
+		ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:7:13-33
 	android:name
-		ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:6:13-69
+		ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml:6:13-69
 uses-sdk
-INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
-INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
-		ADDED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\wiemo\AppData\Local\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+		INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+		ADDED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml
+		INJECTED from E:\flutter\.pub-cache\hosted\pub.dartlang.org\stripe_native-1.2.3\android\src\main\AndroidManifest.xml

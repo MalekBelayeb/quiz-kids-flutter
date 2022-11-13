@@ -1,2 +1,0 @@
-com/rbitwo/stripe_native/BuildConfig.java
- com.rbitwo.stripe_native.BuildConfig

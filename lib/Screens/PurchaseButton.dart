@@ -3,7 +3,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'QuizSignUp.dart';
+import 'signup/QuizSignUp.dart';
 
 class PurchaseButton extends StatelessWidget {
   @override

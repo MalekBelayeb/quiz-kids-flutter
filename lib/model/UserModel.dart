@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_flutter/Screens/QuizUsername.dart';
 import 'package:quiz_flutter/utils/QuizStrings.dart';
 
 class NewUserModel {

@@ -5,15 +5,17 @@ import 'package:quiz_flutter/Screens/QuizArt.dart';
 import 'package:quiz_flutter/Screens/QuizNewList.dart';
 import 'package:quiz_flutter/Screens/QuizScience.dart';
 import 'package:quiz_flutter/Screens/QuizSearch.dart';
+import 'package:quiz_flutter/controller/CategoryController.dart';
+import 'package:quiz_flutter/model/CategoryModel.dart';
 import 'package:quiz_flutter/model/QuizModels.dart';
 import 'package:quiz_flutter/model/UserModel.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
+import 'package:quiz_flutter/utils/Consts.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizConstant.dart';
 import 'package:quiz_flutter/utils/QuizDataGenerator.dart';
 import 'package:quiz_flutter/utils/QuizStrings.dart';
 import 'package:quiz_flutter/utils/QuizWidget.dart';
-import 'package:quiz_flutter/Screens/QuizUsername.dart';
 
 class QuizHome extends StatefulWidget {
   static String tag = '/QuizHome';
@@ -23,19 +25,17 @@ class QuizHome extends StatefulWidget {
 }
 
 class _QuizHomeState extends State<QuizHome> {
-  late List<NewQuizModel> mListings;
+  List<CategoryModel> categoryList = [];
 
   @override
   void initState() {
     super.initState();
-    mListings = getQuizData();
+    CategoryController.instance.getAllCategories().then(((categories) {
+      setState(() {
+        //    categoryList = categories ?? [];
+      });
+    }));
   }
-
-  /*late NewQuizModel categorie;
-
-  NewQuiz(NewQuizModel model, int pos) {
-    this.categorie = model;
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -106,47 +106,15 @@ class _QuizHomeState extends State<QuizHome> {
                     height: 300,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: mListings.length,
+                      itemCount: categoryList.length,
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) =>
                           GestureDetector(
                         onTap: () {
-                          setState(() {
-                            if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                'Sciences') {
-                              QuizScience(index: index).launch(context);
-                            } else if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                'Geographie') {
-                              PurchaseMoreScreen().launch(context);
-                            } else if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                'Histoire') {
-                              PurchaseMoreScreen().launch(context);
-                            } else if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                'Art') {
-                              QuizArt(index: index).launch(context);
-                            } else if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                ' Sport') {
-                              PurchaseMoreScreen().launch(context);
-                            } else if (NewQuiz(mListings[index], index)
-                                    .categorie
-                                    .quizName ==
-                                'Divertissement') {
-                              PurchaseMoreScreen().launch(context);
-                            }
-                          });
+                          setState(() {});
                         },
-                        child: NewQuiz(mListings[index], index),
+                        child: CategoryItem(categoryList[index], index),
                       ),
                     ),
                   ).paddingOnly(bottom: 16),
@@ -161,10 +129,10 @@ class _QuizHomeState extends State<QuizHome> {
 }
 
 // ignore: must_be_immutable
-class NewQuiz extends StatelessWidget {
-  late NewQuizModel categorie;
+class CategoryItem extends StatelessWidget {
+  late CategoryModel categorie;
 
-  NewQuiz(NewQuizModel model, int pos) {
+  CategoryItem(CategoryModel model, int pos) {
     categorie = model;
   }
 
@@ -188,12 +156,12 @@ class NewQuiz extends StatelessWidget {
                       topLeft: Radius.circular(16.0),
                       topRight: Radius.circular(16.0)),
                   child: Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage(categorie.quizImage),
-                        fit: BoxFit.cover,
-                      )))
+                    height: 200,
+                    child: Image.network(
+                      '${Consts.baseUrl}/uploads/${categorie.image}',
+                      fit: BoxFit.cover,
+                    ),
+                  )
 
                   /*CircleAvatar(
                     backgroundImage: AssetImage(categorie.quizImage),
@@ -211,13 +179,12 @@ class NewQuiz extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    text(categorie.quizName,
+                    text(categorie.name,
                         fontSize: textSizeMedium,
                         isLongText: true,
                         fontFamily: fontMedium,
                         isCentered: false),
-                    text(categorie.totalQuiz,
-                        textColor: quiz_textColorSecondary),
+                    text('${5}', textColor: quiz_textColorSecondary),
                   ],
                 ),
                 Icon(Icons.arrow_forward, color: quiz_textColorSecondary),

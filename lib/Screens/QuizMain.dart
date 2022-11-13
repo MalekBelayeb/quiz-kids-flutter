@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/QuizDashboard.dart';
 import 'package:quiz_flutter/Screens/QuizSignIn.dart';
-import 'package:quiz_flutter/Screens/QuizSignUp.dart';
+import 'package:quiz_flutter/Screens/signup/QuizSignUp.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizWidget.dart';
