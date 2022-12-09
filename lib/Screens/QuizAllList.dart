@@ -1,15 +1,14 @@
 //import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz_flutter/Screens/PurchaseMoreScreen.dart';
-import 'package:quiz_flutter/Screens/QuizArt.dart';
-import 'package:quiz_flutter/Screens/QuizScience.dart';
+import 'package:quiz_flutter/controller/QuizController.dart';
+import 'package:quiz_flutter/data/models/Quiz.dart';
+import 'package:quiz_flutter/data/models/QuizAttempt.dart';
 import 'package:quiz_flutter/model/QuizModels.dart';
+import 'package:quiz_flutter/screens/CategoryDetails.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizConstant.dart';
-import 'package:quiz_flutter/utils/QuizDataGenerator.dart';
 
 class QuizAllList extends StatefulWidget {
   static String tag = '/QuizAllList';
@@ -21,168 +20,74 @@ class QuizAllList extends StatefulWidget {
 class _QuizAllListState extends State<QuizAllList> {
   late List<NewQuizModel> mListings;
 
+  List<QuizBodyRes> mList = [];
+  List<AllQuestionsAttemptBodyRes> quizAttempts = [];
+
+  var isLoadingQuizAll = false;
+  var isLoadingCompleted = false;
+
   int selectedPos = 1;
 
   @override
   void initState() {
     super.initState();
+
     selectedPos = 1;
-    mListings = getQuizData();
+    isLoadingQuizAll = true;
+
+    QuizController.instance.getAllQuizAttempt().then((value) {
+      setState(() {
+        this.quizAttempts = value ?? [];
+      });
+    });
+
+    QuizController.instance.getAllQuiz().then((value) {
+      setState(() {
+        this.mList = value ?? [];
+        isLoadingQuizAll = false;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
-    final quizAll = StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-      staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-      scrollDirection: Axis.vertical,
-      itemCount: mListings.length,
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        changeStatusColor(quiz_app_background);
-        return Container(
-          margin: EdgeInsets.all(8),
-          child: Column(
-            children: <Widget>[
-              ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0)),
-                  child: Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage(
-                          (mListings[index].quizImage),
-                        ),
-                        fit: BoxFit.cover,
-                      )))),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0)),
-                  color: quiz_white,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    text(mListings[index].quizName,
-                            fontSize: textSizeMedium,
-                            maxLine: 2,
-                            fontFamily: fontMedium)
-                        .paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
-                    text(mListings[index].totalQuiz,
-                            textColor: quiz_textColorSecondary)
-                        .paddingOnly(left: 16, right: 16, bottom: 8),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ).cornerRadiusWithClipRRect(16).onTap(() {
-          setState(() {
-            if (mListings[index].quizName == 'Sciences') {
-              QuizScience(index: index).launch(context);
-            } else if (mListings[index].quizName == 'Geographie') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Histoire') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Art') {
-              QuizArt(index: index).launch(context);
-            } else if (mListings[index].quizName == ' Sport') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Divertissement') {
-              PurchaseMoreScreen().launch(context);
-            }
-          });
-        });
-      },
-      //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.67, mainAxisSpacing: 16, crossAxisSpacing: 16),
-    );
+    Widget quizAll = isLoadingQuizAll
+        ? Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 260,
+            child: Center(
+                child: CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(quiz_colorPrimary),
+            )),
+          )
+        : ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: mList.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return quizList(model: mList[index], pos: index);
+            });
 
-    Widget quizCompleted = StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      mainAxisSpacing: 4.0,
-      crossAxisSpacing: 4.0,
-      staggeredTileBuilder: (index) => StaggeredTile.fit(2),
-      scrollDirection: Axis.vertical,
-      itemCount: 1,
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        changeStatusColor(quiz_app_background);
-        return Container(
-          margin: EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0)),
-                  child: Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage(
-                          (mListings[0].quizImage),
-                        ),
-                        fit: BoxFit.cover,
-                      )))),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0)),
-                  color: quiz_white,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    text(mListings[0].quizName,
-                            fontSize: textSizeMedium,
-                            maxLine: 2,
-                            fontFamily: fontMedium)
-                        .paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
-                    text(mListings[2].totalQuiz,
-                            textColor: quiz_textColorSecondary)
-                        .paddingOnly(left: 16, right: 16, bottom: 16),
-                    LinearProgressIndicator(
-                      value: 0.5,
-                      backgroundColor: textSecondaryColor.withOpacity(0.2),
-                      valueColor: AlwaysStoppedAnimation<Color>(quiz_green),
-                    ).paddingOnly(left: 16, right: 16, bottom: 16),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ).cornerRadiusWithClipRRect(16).onTap(() {
-          setState(() {
-            if (mListings[index].quizName == 'Sciences') {
-              QuizScience(index: index).launch(context);
-            } else if (mListings[index].quizName == 'Geographie') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Histoire') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Art') {
-              QuizArt(index: index).launch(context);
-            } else if (mListings[index].quizName == ' Sport') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Divertissement') {
-              PurchaseMoreScreen().launch(context);
-            }
-          });
-        });
-      },
-      //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.60, mainAxisSpacing: 16, crossAxisSpacing: 16),
-    );
+    Widget quizCompleted = isLoadingCompleted
+        ? Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 260,
+            child: Center(
+                child: CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(quiz_colorPrimary),
+            )),
+          )
+        : ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: quizAttempts.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return QuizAttemptItem(model: quizAttempts[index], pos: index);
+            });
 
     return SafeArea(
       child: Scaffold(

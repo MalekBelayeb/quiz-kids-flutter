@@ -7,8 +7,10 @@ import 'package:quiz_flutter/utils/QuizColors.dart';
 
 import 'QuizConstant.dart';
 
-TextField quizEditTextStyle(var hintText, {isPassword = true}) {
+TextField quizEditTextStyle(var hintText,
+    {isPassword = true, Function(String)? onChangeText = null}) {
   return TextField(
+    onChanged: onChangeText ?? (val) {},
     style: TextStyle(fontSize: textSizeMedium, fontFamily: fontRegular),
     obscureText: isPassword,
     decoration: InputDecoration(
@@ -72,7 +74,7 @@ class quizButtonState extends State<quizButton> {
 // ignore: must_be_immutable, camel_case_types
 class quizTopBar extends StatefulWidget {
   var titleName;
-
+  var quizCount = 0;
   quizTopBar(var this.titleName);
 
   @override

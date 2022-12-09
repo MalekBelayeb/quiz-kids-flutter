@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:quiz_flutter/Screens/QuizDashboard.dart';
 import 'package:quiz_flutter/Screens/QuizMain.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 
@@ -17,8 +18,12 @@ class _QuizSplashScreenState extends State<QuizSplashScreen> {
   }
 
   void init() async {
-    await 3.seconds.delay.then((value) => push(QuizMain(),
-        pageRouteAnimation: PageRouteAnimation.Slide, isNewTask: true));
+    await initialize();
+    sharedPreferences.getString('user') == null
+        ? await 3.seconds.delay.then((value) => push(QuizMain(),
+            pageRouteAnimation: PageRouteAnimation.Slide, isNewTask: true))
+        : await 3.seconds.delay.then((value) => push(QuizDashboard(),
+            pageRouteAnimation: PageRouteAnimation.Slide, isNewTask: true));
   }
 
   @override

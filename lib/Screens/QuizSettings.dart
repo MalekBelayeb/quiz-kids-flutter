@@ -5,6 +5,7 @@ import 'package:quiz_flutter/Screens/QuizContact.dart';
 import 'package:quiz_flutter/Screens/QuizHelp.dart';
 import 'package:quiz_flutter/Screens/QuizPrivacy.dart';
 import 'package:quiz_flutter/Screens/QuizSignIn.dart';
+import 'package:quiz_flutter/controller/AuthController.dart';
 import 'package:quiz_flutter/model/UserModel.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
@@ -97,7 +98,7 @@ class _QuizSettingsState extends State<QuizSettings> {
                       style: boldTextStyle(color: quiz_colorPrimary, size: 18),
                     ).paddingAll(16).onTap(() {
                       setState(() {
-                        QuizSignIn().launch(context);
+                        AuthController.instance.logout();
                       });
                     })
                   ],

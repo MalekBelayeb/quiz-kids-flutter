@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/PurchaseMoreScreen.dart';
 import 'package:quiz_flutter/Screens/QuizSettings.dart';
+import 'package:quiz_flutter/controller/ProfileController.dart';
+import 'package:quiz_flutter/data/models/User.dart';
 import 'package:quiz_flutter/model/QuizModels.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
+import 'package:quiz_flutter/utils/Consts.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizConstant.dart';
 import 'package:quiz_flutter/utils/QuizDataGenerator.dart';
@@ -20,17 +22,36 @@ class QuizProfile extends StatefulWidget {
 }
 
 class _QuizProfileState extends State<QuizProfile> {
-  late List<QuizBadgesModel> mList;
-  late List<QuizScoresModel> mList1;
-
+  List<BadgeBodyRes> mList = [];
+  List<QuizScoresModel> mList1 = [];
+  UserBodyRes? user;
   int selectedPos = 1;
 
   @override
   void initState() {
     super.initState();
+
     selectedPos = 1;
-    mList = quizBadgesData();
-    mList1 = quizScoresData();
+
+    ProfileController.instance.getMyProfile().then((value) {
+      setState(() {
+        user = value;
+        ProfileController.instance.getBadges().then((value) {
+          setState(() {
+            mList = value?.map((e) {
+                  if ((user?.badges ?? [])
+                      .map((e) => e.id)
+                      .toList()
+                      .contains(e.id)) {
+                    e.owned = true;
+                  }
+                  return e;
+                }).toList() ??
+                [];
+          });
+        });
+      });
+    });
   }
 
   @override
@@ -70,12 +91,12 @@ class _QuizProfileState extends State<QuizProfile> {
               })
             ],
           ),
-          text(quiz_lbl_user,
+          text('${user?.firstname} ${user?.lastname}',
                   textColor: quiz_textColorPrimary,
                   fontSize: textSizeLargeMedium,
                   fontFamily: fontBold)
               .paddingOnly(top: 24),
-          text(quiz_lbl_Xp,
+          text('${user?.score} points',
                   textColor: quiz_textColorSecondary,
                   fontSize: textSizeMedium,
                   fontFamily: fontRegular)
@@ -175,13 +196,16 @@ class _QuizProfileState extends State<QuizProfile> {
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) =>
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
+                          Container(
+                            color: (mList[index].owned ?? false)
+                                ? Colors.white
+                                : Colors.grey.withOpacity(0.2),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 children: <Widget>[
                                   commonCacheImageWidget(
-                                    mList[index].img,
+                                    '${Consts.baseUrl}/uploads/${mList[index].image}',
                                     height: 50,
                                     width: 50,
                                   ).paddingOnly(right: 8),
@@ -189,16 +213,24 @@ class _QuizProfileState extends State<QuizProfile> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      text(mList[index].title,
+                                      text(mList[index].name,
                                           fontFamily: fontMedium,
-                                          textColor: quiz_textColorPrimary),
-                                      text(mList[index].subtitle,
-                                          textColor: quiz_textColorSecondary)
+                                          textColor: (mList[index].owned ??
+                                                  false)
+                                              ? quiz_textColorPrimary
+                                              : Colors.grey.withOpacity(0.9)),
+                                      text(
+                                          '${mList[index].scoreCriteria ?? 0} necessaires pour ce badge',
+                                          textColor: (mList[index].owned ??
+                                                  false)
+                                              ? quiz_textColorPrimary
+                                              : Colors.grey.withOpacity(0.9),
+                                          fontSize: 12.0)
                                     ],
                                   ),
                                 ],
                               ),
-                            ).paddingAll(8),
+                            ),
                           ))).paddingOnly(bottom: 16)
               : Container(
                   decoration: boxDecoration(

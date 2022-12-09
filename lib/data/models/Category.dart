@@ -2,13 +2,25 @@ class CategoryBodyRes {
   String? id;
   String? name;
   String? image;
+  int? quizCount;
+  int? requiredPoints;
+  bool? locked = true;
 
-  CategoryBodyRes({this.id, this.name, this.image});
+  CategoryBodyRes(
+      {this.id,
+      this.name,
+      this.image,
+      this.quizCount,
+      this.requiredPoints,
+      this.locked});
   factory CategoryBodyRes.fromJson(dynamic json) {
     return CategoryBodyRes(
       id: json['_id'] as String,
       name: json['category'] as String,
       image: json['image'] as String,
+      quizCount: json['quizCount'] as int,
+      requiredPoints: json['requiredPoints'] as int,
+      locked: json['locked'] as bool,
     );
   }
 }

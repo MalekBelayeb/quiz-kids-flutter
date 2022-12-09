@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/PurchaseMoreScreen.dart';
-import 'package:quiz_flutter/Screens/QuizArt.dart';
-import 'package:quiz_flutter/Screens/QuizScience.dart';
 import 'package:quiz_flutter/model/QuizModels.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
@@ -45,6 +43,7 @@ class _QuizListingState extends State<QuizListing> {
         itemBuilder: (BuildContext context, int index) => GestureDetector(
           onTap: () {
             setState(() {
+              /*
               if (mListings[index].quizName == 'Sciences') {
                 QuizScience(index: index).launch(context);
               } else if (mListings[index].quizName == 'Geographie') {
@@ -57,7 +56,7 @@ class _QuizListingState extends State<QuizListing> {
                 PurchaseMoreScreen().launch(context);
               } else if (mListings[index].quizName == 'Divertissement') {
                 PurchaseMoreScreen().launch(context);
-              }
+              }*/
             });
           },
           child: Container(
@@ -124,7 +123,6 @@ class _QuizListingState extends State<QuizListing> {
         changeStatusColor(quiz_app_background);
         return Container(
           margin: EdgeInsets.all(8),
-
           //decoration: boxDecoration(radius: 16, showShadow: true, bgColor: quiz_white),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,12 +139,7 @@ class _QuizListingState extends State<QuizListing> {
                           (mListings[index].quizImage),
                         ),
                         fit: BoxFit.cover,
-                      )))
-
-                  /*CircleAvatar(
-                    backgroundImage: AssetImage(categorie.quizImage),
-                    radius: MediaQuery.of(context).size.width / 8.5),*/
-                  ),
+                      )))),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -172,6 +165,7 @@ class _QuizListingState extends State<QuizListing> {
           ),
         ).cornerRadiusWithClipRRect(16).onTap(() {
           setState(() {
+            /*
             if (mListings[index].quizName == 'Sciences') {
               QuizScience(index: index).launch(context);
             } else if (mListings[index].quizName == 'Geographie') {
@@ -184,7 +178,7 @@ class _QuizListingState extends State<QuizListing> {
               PurchaseMoreScreen().launch(context);
             } else if (mListings[index].quizName == 'Divertissement') {
               PurchaseMoreScreen().launch(context);
-            }
+            }*/
           });
         });
       },

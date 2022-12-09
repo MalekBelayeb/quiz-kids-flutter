@@ -1,3 +1,4 @@
+import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/data/models/Category.dart';
 import 'package:quiz_flutter/data/service/CategoryService.dart';
 import 'package:quiz_flutter/model/CategoryModel.dart';
@@ -7,15 +8,12 @@ class CategoryController {
 
   static final instance = CategoryController();
 
-  Future<List<CategoryModel>?> getAllCategories() async {
-    var res = await categoryService.getAllCategory();
+  Future<List<CategoryBodyRes>?> getAllCategories() async {
+    var idUser = await sharedPreferences.getString('user') ?? "";
+    var res = await categoryService.getAllCategory(idUser);
 
     if (res is GetAllCategorySuccessRes) {
-      List<CategoryModel> result = res.categoryList
-          .map((e) => CategoryModel(name: e.name!, image: e.image!))
-          .toList();
-
-      return result;
+      return res.categoryList.toList();
     } else {
       return null;
     }

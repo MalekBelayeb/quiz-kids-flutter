@@ -37,7 +37,7 @@ class SigninSuccessRes {
     return SigninSuccessRes(
       success: json['success'] as bool,
       message: json['message'] as String,
-      user: json['message'] as String,
+      user: json['user'] as String,
     );
   }
 }
