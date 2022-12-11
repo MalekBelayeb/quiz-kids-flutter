@@ -207,6 +207,7 @@ class _QuizCardSelectionState extends State<QuizCardSelection> {
               .then((value) {
             //if (value is AnswerAttemptBodyRes) {}
           });
+
           Timer(Duration(seconds: 2), () {
             if (widget.questionIndex == 0) {
               widget.finishQuiz();

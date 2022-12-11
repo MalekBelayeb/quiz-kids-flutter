@@ -57,6 +57,8 @@ class _QuizFinishState extends State<QuizFinish> {
                                     .then(
                                   (value) {
                                     isLoading = false;
+                                    QuizController.instance.userQuizAnswerList
+                                        .clear();
                                     QuizDashboard().launch(context);
                                   },
                                 );
