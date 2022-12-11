@@ -101,10 +101,12 @@ class _QuizDetailState extends State<QuizDetail> {
                         child: Container(
                           margin: EdgeInsets.only(top: 50),
                           padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
-                          child: text(widget.questions?[x].question,
-                              fontSize: textSizeLarge,
-                              fontFamily: fontBold,
-                              isLongText: true),
+                          child: Text(
+                            widget.questions?[x].question ?? "",
+                            style: TextStyle(
+                                color: textSecondaryColor,
+                                fontSize: textSizeMedium),
+                          ),
                         )),
                     Container(
                         padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -118,6 +120,11 @@ class _QuizDetailState extends State<QuizDetail> {
                                 questionId: widget.questions?[x].id,
                                 answer: widget.questions?[x].answers?[y],
                                 questionIndex: x,
+                                onSelectAnswer: () {
+                                  setState(() {
+                                    //showResult = true;
+                                  });
+                                },
                                 gainedScore: (gain) {
                                   setState(() {
                                     score += gain;
@@ -144,46 +151,6 @@ class _QuizDetailState extends State<QuizDetail> {
     }
     return cardList;
   }
-
-  Widget quizCardSelection(var option, var option1, bool isCorrect, onPressed) {
-    bool showResult = false;
-    return InkWell(
-      onTap: () {
-        onPressed();
-      },
-      child: Container(
-        margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
-        decoration: showResult
-            ? boxDecoration(
-                showShadow: false,
-                bgColor: isCorrect
-                    ? quiz_color_green.withOpacity(0.1)
-                    : quiz_color_red.withOpacity(0.1),
-                radius: 10,
-                color: isCorrect ? quiz_color_green : quiz_color_red)
-            : boxDecoration(
-                showShadow: false,
-                //quiz_edit_background
-                bgColor: quiz_edit_background,
-                radius: 10,
-                color: quiz_edit_background),
-        padding: EdgeInsets.fromLTRB(16, 10, 16, 10),
-        width: 320,
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Center(
-              child: text(option1, textColor: quiz_textColorSecondary),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: text(option, textColor: quiz_textColorSecondary),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class QuizCardSelection extends StatefulWidget {
@@ -191,6 +158,7 @@ class QuizCardSelection extends StatefulWidget {
   String? quizId;
   String? questionId;
 
+  Function onSelectAnswer;
   Function moveToNext;
   Function finishQuiz;
   Function(int) gainedScore;
@@ -201,6 +169,7 @@ class QuizCardSelection extends StatefulWidget {
       required this.questionId,
       required this.quizId,
       required this.questionIndex,
+      required this.onSelectAnswer,
       required this.moveToNext,
       required this.finishQuiz,
       required this.gainedScore});
@@ -216,27 +185,36 @@ class _QuizCardSelectionState extends State<QuizCardSelection> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        setState(() {
-          showAnswers = true;
-        });
+        if (QuizController.instance.userQuizAnswerList.firstWhere(
+                (element) => element?.questionId == widget.questionId,
+                orElse: () => null) ==
+            null) {
+          setState(() {
+            showAnswers = true;
 
-        if (widget.answer?.isCorrect ?? false) {
-          widget.gainedScore(widget.answer?.score ?? 0);
-        }
+            QuizController.instance.userQuizAnswerList.add(UserQuizAnswer(
+                questionId: widget.questionId ?? "",
+                answeId: widget.answer?.id ?? ""));
+          });
 
-        QuizController.instance
-            .addAnswerAttempt(widget.quizId ?? "", widget.questionId ?? "",
-                widget.answer?.id ?? "")
-            .then((value) {
-          //if (value is AnswerAttemptBodyRes) {}
-        });
-        Timer(Duration(seconds: 2), () {
-          if (widget.questionIndex == 0) {
-            widget.finishQuiz();
-          } else {
-            widget.moveToNext();
+          if (widget.answer?.isCorrect ?? false) {
+            widget.gainedScore(widget.answer?.score ?? 0);
           }
-        });
+
+          QuizController.instance
+              .addAnswerAttempt(widget.quizId ?? "", widget.questionId ?? "",
+                  widget.answer?.id ?? "")
+              .then((value) {
+            //if (value is AnswerAttemptBodyRes) {}
+          });
+          Timer(Duration(seconds: 2), () {
+            if (widget.questionIndex == 0) {
+              widget.finishQuiz();
+            } else {
+              widget.moveToNext();
+            }
+          });
+        }
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(16, 0, 16, 16),

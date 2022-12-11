@@ -3,9 +3,17 @@ import 'package:quiz_flutter/data/models/Quiz.dart';
 import 'package:quiz_flutter/data/models/QuizAttempt.dart';
 import 'package:quiz_flutter/data/service/QuizService.dart';
 
+class UserQuizAnswer {
+  String questionId;
+  String answeId;
+
+  UserQuizAnswer({required this.questionId, required this.answeId});
+}
+
 class QuizController {
   final QuizService quizService = QuizService();
   static final instance = QuizController();
+  List<UserQuizAnswer?> userQuizAnswerList = [];
 
   Future<List<QuizBodyRes>?> getAllQuizByCat(String idCat) async {
     var res = await quizService.getAllQuizByCat(idCat);
