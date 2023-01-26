@@ -52,8 +52,10 @@ class QuizController {
 
     var res = await quizService.createQuizAttempt(
         CreateQuizAttemptBodyReq(quizId: quizId, userId: userId));
+    print("sdqdsq");
 
     if (res is QuizAttemptBodyRes) {
+      print(res);
       return res;
     } else {
       return null;

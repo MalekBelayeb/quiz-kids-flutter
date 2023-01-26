@@ -92,11 +92,56 @@ class _QuizStartState extends State<QuizStart> {
                                       .then((value) {
                                     if (value is QuizAttemptBodyRes) {
                                       isLoading = false;
-                                      QuizDetail(
-                                        quizId: value.id ?? "",
-                                        questions:
-                                            widget.model?.questions ?? [],
-                                      ).launch(context);
+
+                                      if (value.alreadyPlayed == true) {
+                                        showDialog<String>(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                AlertDialog(
+                                                  title: Row(children: [
+                                                    Image.asset(
+                                                      'images/quiz/alerte.png',
+                                                      width: 70,
+                                                      height: 70,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                    Text(
+                                                      'Quiz already played',
+                                                      style: TextStyle(
+                                                          fontSize: 14),
+                                                    )
+                                                  ]),
+                                                  content: Text(
+                                                      "You have already played this quiz",
+                                                      style: TextStyle(
+                                                          fontSize: 14)),
+                                                  actions: [
+                                                    FlatButton(
+                                                      child: Text(
+                                                          "Yes, play again"),
+                                                      onPressed: () {
+                                                        QuizDetail(
+                                                          quizId:
+                                                              value.id ?? "",
+                                                          questions: widget
+                                                                  .model
+                                                                  ?.questions ??
+                                                              [],
+                                                          quizAlreadyPlayed:
+                                                              true,
+                                                        ).launch(context);
+                                                      },
+                                                    )
+                                                  ],
+                                                ));
+                                      } else {
+                                        QuizDetail(
+                                          quizId: value.id ?? "",
+                                          questions:
+                                              widget.model?.questions ?? [],
+                                          quizAlreadyPlayed: false,
+                                        ).launch(context);
+                                      }
                                     }
                                   });
                                 },

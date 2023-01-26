@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz_flutter/Screens/PurchaseMoreScreen.dart';
+import 'package:quiz_flutter/controller/CategoryController.dart';
+import 'package:quiz_flutter/data/models/Category.dart';
 import 'package:quiz_flutter/model/QuizModels.dart';
+import 'package:quiz_flutter/screens/CategoryDetails.dart';
+import 'package:quiz_flutter/screens/QuizHome.dart';
 import 'package:quiz_flutter/utils/AppWidget.dart';
 import 'package:quiz_flutter/utils/QuizColors.dart';
 import 'package:quiz_flutter/utils/QuizConstant.dart';
@@ -20,6 +24,10 @@ class QuizListing extends StatefulWidget {
 
 class _QuizListingState extends State<QuizListing> {
   late List<NewQuizModel> mListings;
+  List<CategoryBodyRes> categoryList = [];
+  List<CategoryBodyRes> initialCategoryList = [];
+
+  var isLoading = false;
 
   var selectedGrid = true;
   var selectedList = false;
@@ -28,6 +36,13 @@ class _QuizListingState extends State<QuizListing> {
   void initState() {
     super.initState();
     mListings = getQuizData();
+    CategoryController.instance.getAllCategories().then(((categories) {
+      setState(() {
+        isLoading = false;
+        categoryList = categories ?? [];
+        initialCategoryList = categories ?? [];
+      });
+    }));
   }
 
   @override
@@ -36,151 +51,102 @@ class _QuizListingState extends State<QuizListing> {
 
     final listing = Container(
       child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: mListings.length,
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        itemBuilder: (BuildContext context, int index) => GestureDetector(
-          onTap: () {
-            setState(() {
-              /*
-              if (mListings[index].quizName == 'Sciences') {
-                QuizScience(index: index).launch(context);
-              } else if (mListings[index].quizName == 'Geographie') {
-                PurchaseMoreScreen().launch(context);
-              } else if (mListings[index].quizName == 'Histoire') {
-                PurchaseMoreScreen().launch(context);
-              } else if (mListings[index].quizName == 'Art') {
-                QuizArt(index: index).launch(context);
-              } else if (mListings[index].quizName == ' Sport') {
-                PurchaseMoreScreen().launch(context);
-              } else if (mListings[index].quizName == 'Divertissement') {
-                PurchaseMoreScreen().launch(context);
-              }*/
-            });
-          },
-          child: Container(
-            decoration: boxDecoration(
-                radius: 16, showShadow: true, bgColor: quiz_white),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Stack(
-                  alignment: Alignment.topRight,
-                  children: <Widget>[
-                    ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16.0),
-                            topRight: Radius.circular(16.0)),
-                        child: Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                              image: AssetImage(
-                                (mListings[index].quizImage),
-                              ),
-                              fit: BoxFit.cover,
-                            )))
-
-                        /*CircleAvatar(
-                    backgroundImage: AssetImage(categorie.quizImage),
-                    radius: MediaQuery.of(context).size.width / 8.5),*/
-                        ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      text(mListings[index].quizName,
-                          fontSize: textSizeMedium,
-                          isLongText: true,
-                          fontFamily: fontMedium),
-                      SizedBox(height: 8),
-                      text(mListings[index].totalQuiz,
-                          textColor: quiz_textColorSecondary),
-                    ],
+          scrollDirection: Axis.vertical,
+          itemCount: categoryList.length,
+          shrinkWrap: true,
+          physics: ScrollPhysics(),
+          itemBuilder: (BuildContext context, int index) => Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (!(categoryList[index].locked ?? false)) {
+                          CategoryDetails(
+                            category: categoryList[index],
+                          ).launch(context);
+                        } else {
+                          showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: Row(children: [
+                                      Image.asset(
+                                        'images/quiz/alerte.png',
+                                        width: 70,
+                                        height: 70,
+                                        fit: BoxFit.contain,
+                                      ),
+                                      Text(
+                                        'you dont have enough point',
+                                        style: TextStyle(fontSize: 14),
+                                      )
+                                    ]),
+                                    content: Text(
+                                        "you dont have enough point you need more point to proceed",
+                                        style: TextStyle(fontSize: 14)),
+                                  ));
+                        }
+                      });
+                    },
+                    child: CategoryItem(
+                      model: categoryList[index],
+                      pos: index,
+                      widthPercent: 0.6,
+                      isVerticalList: true,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ).paddingOnly(bottom: spacing_standard_new),
-        ),
-      ),
+              )),
     );
 
     final gridList = StaggeredGridView.countBuilder(
       crossAxisCount: 4,
-      mainAxisSpacing: 4.0,
+      mainAxisSpacing: 22.0,
       crossAxisSpacing: 4.0,
       staggeredTileBuilder: (index) => StaggeredTile.fit(2),
       scrollDirection: Axis.vertical,
-      itemCount: mListings.length,
+      itemCount: categoryList.length,
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
         changeStatusColor(quiz_app_background);
-        return Container(
-          margin: EdgeInsets.all(8),
-          //decoration: boxDecoration(radius: 16, showShadow: true, bgColor: quiz_white),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16.0),
-                      topRight: Radius.circular(16.0)),
-                  child: Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage(
-                          (mListings[index].quizImage),
-                        ),
-                        fit: BoxFit.cover,
-                      )))),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0)),
-                  color: quiz_white,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    text(mListings[index].quizName,
-                            fontSize: textSizeMedium,
-                            maxLine: 2,
-                            fontFamily: fontMedium)
-                        .paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
-                    text(mListings[index].totalQuiz,
-                            textColor: quiz_textColorSecondary)
-                        .paddingOnly(left: 16, right: 16, bottom: 16),
-                  ],
-                ),
-              ),
-            ],
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              if (!(categoryList[index].locked ?? false)) {
+                CategoryDetails(
+                  category: categoryList[index],
+                ).launch(context);
+              } else {
+                showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                          title: Row(children: [
+                            Image.asset(
+                              'images/quiz/alerte.png',
+                              width: 70,
+                              height: 70,
+                              fit: BoxFit.contain,
+                            ),
+                            Text(
+                              'you dont have enough point',
+                              style: TextStyle(fontSize: 14),
+                            )
+                          ]),
+                          content: Text(
+                              "you dont have enough point you need more point to proceed",
+                              style: TextStyle(fontSize: 14)),
+                        ));
+              }
+            });
+          },
+          child: CategoryItem(
+            model: categoryList[index],
+            pos: index,
+            fontSize: 12,
           ),
-        ).cornerRadiusWithClipRRect(16).onTap(() {
-          setState(() {
-            /*
-            if (mListings[index].quizName == 'Sciences') {
-              QuizScience(index: index).launch(context);
-            } else if (mListings[index].quizName == 'Geographie') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Histoire') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Art') {
-              QuizArt(index: index).launch(context);
-            } else if (mListings[index].quizName == ' Sport') {
-              PurchaseMoreScreen().launch(context);
-            } else if (mListings[index].quizName == 'Divertissement') {
-              PurchaseMoreScreen().launch(context);
-            }*/
-          });
-        });
+        );
       },
       //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.58, crossAxisSpacing: 16, mainAxisSpacing: 16),
     );
@@ -236,7 +202,17 @@ class _QuizListingState extends State<QuizListing> {
                 SingleChildScrollView(
                     child: Container(
                   margin: EdgeInsets.all(16),
-                  child: selectedGrid ? gridList : listing,
+                  child: isLoading
+                      ? Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height - 260,
+                          child: Center(
+                              child: CircularProgressIndicator(
+                            valueColor: new AlwaysStoppedAnimation<Color>(
+                                quiz_colorPrimary),
+                          )),
+                        )
+                      : (selectedGrid ? gridList : listing),
                 ))
               ],
             ),

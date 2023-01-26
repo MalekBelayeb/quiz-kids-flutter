@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -32,6 +34,7 @@ class _QuizHomeState extends State<QuizHome> {
   void initState() {
     super.initState();
     this.isLoading = true;
+
     CategoryController.instance.getAllCategories().then(((categories) {
       setState(() {
         isLoading = false;
@@ -146,6 +149,29 @@ class _QuizHomeState extends State<QuizHome> {
                                     CategoryDetails(
                                       category: categoryList[index],
                                     ).launch(context);
+                                  } else {
+                                    showDialog<String>(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            AlertDialog(
+                                              title: Row(children: [
+                                                Image.asset(
+                                                  'images/quiz/alerte.png',
+                                                  width: 70,
+                                                  height: 70,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                                Text(
+                                                  'you dont have enough point',
+                                                  style:
+                                                      TextStyle(fontSize: 14),
+                                                )
+                                              ]),
+                                              content: Text(
+                                                  "you dont have enough point you need more point to proceed",
+                                                  style:
+                                                      TextStyle(fontSize: 14)),
+                                            ));
                                   }
                                 });
                               },
@@ -169,8 +195,17 @@ class _QuizHomeState extends State<QuizHome> {
 // ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
   CategoryBodyRes? categorie;
-
-  CategoryItem({required CategoryBodyRes model, required int pos}) {
+  double widthPercent;
+  double heightPercent;
+  bool isVerticalList;
+  double fontSize;
+  CategoryItem(
+      {required CategoryBodyRes model,
+      required int pos,
+      this.widthPercent = 0.75,
+      this.heightPercent = 0.25,
+      this.isVerticalList = false,
+      this.fontSize = 18.0}) {
     categorie = model;
   }
 
@@ -180,7 +215,7 @@ class CategoryItem extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.only(left: 16),
-          width: MediaQuery.of(context).size.width * 0.75,
+          width: MediaQuery.of(context).size.width * widthPercent,
           decoration:
               boxDecoration(radius: 16, showShadow: true, bgColor: quiz_white),
           child: Column(
@@ -194,7 +229,8 @@ class CategoryItem extends StatelessWidget {
                           topLeft: Radius.circular(16.0),
                           topRight: Radius.circular(16.0)),
                       child: Container(
-                          height: 200,
+                          height: MediaQuery.of(context).size.height *
+                              heightPercent,
                           child: Image.network(
                             '${Consts.baseUrl}/uploads/${categorie?.image}',
                             fit: BoxFit.cover,
@@ -212,7 +248,7 @@ class CategoryItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         text(categorie?.name,
-                            fontSize: textSizeLargeMedium,
+                            fontSize: this.fontSize,
                             isLongText: true,
                             fontFamily: fontMedium,
                             isCentered: false,
@@ -228,9 +264,11 @@ class CategoryItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         text('${categorie?.requiredPoints ?? 0} Points',
-                            textColor: quiz_textColorSecondary),
+                            textColor: quiz_textColorSecondary,
+                            fontSize: this.fontSize),
                         text('${categorie?.quizCount ?? 0} Quiz',
-                            textColor: quiz_textColorSecondary),
+                            textColor: quiz_textColorSecondary,
+                            fontSize: this.fontSize),
                       ],
                     )
                   ],
@@ -240,21 +278,25 @@ class CategoryItem extends StatelessWidget {
           ),
         ),
         (categorie?.locked ?? false)
-            ? Expanded(
+            ? Positioned(
+                top: 0,
+                bottom: 0,
+                right: isVerticalList ? null : 0,
+                left: isVerticalList ? null : 0,
                 child: Container(
-                decoration: boxDecoration(
-                    radius: 16,
-                    showShadow: true,
-                    bgColor: Colors.grey.withOpacity(0.4)),
-                margin: EdgeInsets.only(left: 16),
-                width: MediaQuery.of(context).size.width * 0.75,
-                child: Center(
-                    child: Icon(
-                  IconData(0xe3ae, fontFamily: 'MaterialIcons'),
-                  size: 62,
-                  color: Colors.black87,
-                )),
-              ))
+                  decoration: boxDecoration(
+                      radius: 16,
+                      showShadow: true,
+                      bgColor: Colors.grey.withOpacity(0.4)),
+                  margin: EdgeInsets.only(left: 16),
+                  width: MediaQuery.of(context).size.width * widthPercent,
+                  child: Center(
+                      child: Icon(
+                    IconData(0xe3ae, fontFamily: 'MaterialIcons'),
+                    size: 62,
+                    color: Colors.black87,
+                  )),
+                ))
             : SizedBox(),
       ],
     );

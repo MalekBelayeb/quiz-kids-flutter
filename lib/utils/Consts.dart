@@ -1,5 +1,5 @@
 class Consts {
-  static const baseUrl = "http://192.168.43.113:3000";
+  static const baseUrl = "http://192.168.1.2:3000";
 
   static const loginUrl = baseUrl + "/api/v1/users/login";
   static const signupUrl = baseUrl + "/api/v1/users";

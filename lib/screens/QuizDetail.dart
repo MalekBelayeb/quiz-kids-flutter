@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:quiz_flutter/Screens/QuizHome.dart';
 import 'package:quiz_flutter/controller/QuizController.dart';
 import 'package:quiz_flutter/data/models/Answer.dart';
 import 'package:quiz_flutter/data/models/Question.dart';
@@ -13,8 +14,10 @@ import 'package:quiz_flutter/utils/QuizConstant.dart';
 class QuizDetail extends StatefulWidget {
   static String tag = '/QuizCards';
   String quizId;
+  bool quizAlreadyPlayed;
   List<QuestionBodyRes>? questions = [];
-  QuizDetail({this.questions, required this.quizId});
+  QuizDetail(
+      {this.questions, required this.quizId, required this.quizAlreadyPlayed});
   @override
   _QuizDetailState createState() => _QuizDetailState();
 }
@@ -134,10 +137,14 @@ class _QuizDetailState extends State<QuizDetail> {
                                   removeCards(x);
                                 },
                                 finishQuiz: () {
-                                  QuizFinish(
-                                    points: score,
-                                    quizAttemptId: widget.quizId,
-                                  ).launch(getContext);
+                                  if (widget.quizAlreadyPlayed) {
+                                    QuizHome().launch(getContext);
+                                  } else {
+                                    QuizFinish(
+                                      points: score,
+                                      quizAttemptId: widget.quizId,
+                                    ).launch(getContext);
+                                  }
                                 },
                               )
                             },

@@ -19,7 +19,7 @@ Widget text(
     textAllCaps ? (text ?? "").toUpperCase() : text ?? "",
     textAlign: isCentered ? TextAlign.center : TextAlign.start,
     maxLines: isLongText ? null : maxLine,
-    overflow: TextOverflow.ellipsis,
+    overflow: TextOverflow.clip,
     style: TextStyle(
       fontFamily: fontFamily,
       fontSize: fontSize,

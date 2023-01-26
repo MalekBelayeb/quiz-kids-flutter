@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:quiz_flutter/data/models/Question.dart';
 import 'package:quiz_flutter/data/models/Quiz.dart';
 
@@ -49,18 +51,16 @@ class QuizAttemptBodyRes {
   String? id;
   String? quiz;
   String? user;
+  bool? alreadyPlayed;
 
-  QuizAttemptBodyRes({
-    this.id,
-    this.quiz,
-    this.user,
-  });
+  QuizAttemptBodyRes({this.id, this.quiz, this.user, this.alreadyPlayed});
 
   factory QuizAttemptBodyRes.fromJson(dynamic json) {
     return QuizAttemptBodyRes(
-        id: json['_id'] as String,
+        id: json['id'] as String,
         quiz: json['quiz'] as String,
-        user: json['user'] as String);
+        user: json['user'] as String,
+        alreadyPlayed: json['alreadyPlayed'] as bool);
   }
 }
 
